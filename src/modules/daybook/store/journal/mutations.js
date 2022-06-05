@@ -2,14 +2,14 @@
  * Las mutaciones son sincronas y hacen la modifiacion
  * del state
  */
-export const setEntries =  (/*sate*/) => {
+export const setEntries = (state, entries) => {
+  state.entries = [...state.entries, ...entries];
+  state.isLoading = false;
+};
 
-}
+export const updateEntry = (state, entry) => {
+  const idx = state.entries.findIndex(({ id }) => entry.id === id);
+  state.entries[idx] = entry;
+};
 
-export const updateEntry =  (/*sate*/) => {
-
-}
-
-export const addEntry =  (/*sate*/) => {
-
-}
+export const addEntry = (/*sate*/) => {};

@@ -27,12 +27,12 @@
       class="img-thumbnail"
     />
   </template>
-  <FabComponent icon="fa-save" />
+  <FabComponent icon="fa-save" @on:click="saveEntry" />
 </template>
 
 <script>
 import { defineAsyncComponent } from "vue";
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 import getDayMonthYear from "../helpers/getDayMonthYear";
 
 export default {
@@ -68,12 +68,17 @@ export default {
     },
   },
   methods: {
+    ...mapActions("journal", ["updateEntry"]),
     loadEntry() {
       const entry = this.getEntriesById(this.id);
       return !entry
         ? this.$router.push({ name: "no-entry" })
         : (this.entry = entry);
     },
+    async saveEntry() {
+      this.updateEntry(this.entry)
+      // console.log(this.entry)
+    } 
   },
   created() {
     this.loadEntry();

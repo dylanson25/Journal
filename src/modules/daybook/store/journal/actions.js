@@ -1,13 +1,27 @@
 /**
- * Las acciones pueden ser acciones asincronas que 
+ * Las acciones pueden ser acciones asincronas que
  * pueden mandar a llamar unamutacion
  */
-export const loadEntries = async (/*{ commit }*/) => {
+import journalApi from "@/api/journalApi";
 
-}
-export const updateEntry = async (/*{ commit }*/) => {
+export const loadEntries = async ({ commit }) => {
+  const { data } = await journalApi.get("/entries.json");
+  const entries = [];
+  for (let id of Object.keys(data)) {
+    entries.push({
+      id,
+      ...data[id],
+    });
+  }
+  commit("setEntries", entries);
+};
 
-}
-export const createEntry = async (/*{ commit }*/) => {
-
-}
+export const updateEntry = async ({ commit }, { date, text, picture, id }) => {
+  const { data } = await journalApi.put(`/entries/${id}.json`, {
+    date,
+    text,
+    picture,
+  });
+  commit("updateEntry", {  id, ...data });
+};
+export const createEntry = async (/*{ commit }*/) => {};
