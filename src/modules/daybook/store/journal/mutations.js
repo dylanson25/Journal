@@ -12,4 +12,10 @@ export const updateEntry = (state, entry) => {
   state.entries[idx] = entry;
 };
 
-export const addEntry = (/*sate*/) => {};
+export const addEntry = (state, entry) => {
+  state.entries.unshift(entry);
+};
+export const deleteEntry = (state, id) => {
+  const idx = state.entries.findIndex((entry) => id === entry.id);
+  state.entries.splice(idx, 1);
+};
