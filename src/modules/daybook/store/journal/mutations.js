@@ -15,7 +15,13 @@ export const updateEntry = (state, entry) => {
 export const addEntry = (state, entry) => {
   state.entries.unshift(entry);
 };
+
 export const deleteEntry = (state, id) => {
   const idx = state.entries.findIndex((entry) => id === entry.id);
   state.entries.splice(idx, 1);
 };
+
+export const clearEntries = (state) => {
+  state.entries = []
+};
+
