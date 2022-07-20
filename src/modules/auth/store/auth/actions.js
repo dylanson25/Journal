@@ -9,13 +9,12 @@ export const createUser = async ({ commit }, user) => {
       password,
       returnSecureToken: true,
     });
-    const { idToken, refreshToken } = data;
+    const { idToken, refreshToken, localId } = data;
 
-    const resp = await authApi.post(":update", { displayName: name, idToken });
-    console.log(resp);
+    await authApi.post(":update", { displayName: name, idToken });
+    
     delete user.pswrd;
-
-    commit("loginUser", { user, idToken, refreshToken });
+    commit("loginUser", { user, idToken, refreshToken, localId });
 
     return { ok: true, message: "USER-CREATED" };
   } catch (error) {
@@ -31,10 +30,10 @@ export const signInUser = async ({ commit }, user) => {
       password,
       returnSecureToken: true,
     });
-    const { displayName, idToken, refreshToken } = data;
+    const { displayName, idToken, refreshToken, localId } = data;
     delete user.pswrd;
     user.name = displayName;
-    commit("loginUser", { user, idToken, refreshToken });
+    commit("loginUser", { user, idToken, refreshToken, localId });
 
     return { ok: true, message: " " };
   } catch (error) {

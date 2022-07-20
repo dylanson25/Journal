@@ -4,5 +4,5 @@ export const currentState = ( state ) => {
 }
 
 export const userName = ( state ) => {
-    return state?.user.name || ''
+    return state.user?.name || ''
 }
