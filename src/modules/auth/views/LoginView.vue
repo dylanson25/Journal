@@ -49,8 +49,8 @@ export default {
     const router = useRouter();
     const { loginUser } = useAuth();
     const userForm = ref({
-      email: "dvillarreal0@ucol.mx",
-      pswrd: "foxi25112000",
+      email: "",
+      pswrd: "",
     });
     return {
       userForm,
