@@ -9,6 +9,7 @@
         that was written and adding a relevant image.
       </q>
     </div>
+    <ImageRoadMap></ImageRoadMap>
   </main>
 </template>
 
@@ -16,10 +17,9 @@
 import { defineAsyncComponent } from "vue";
 export default {
   components: {
-    NavbarComponent: defineAsyncComponent(() =>
-      import("../components/Navbar-component.vue")
-    ),
-  },
+    NavbarComponent: defineAsyncComponent(() => import("../components/Navbar-component.vue")),
+    ImageRoadMap: defineAsyncComponent(() => import("../components/ImageRoadMap-component.vue")),
+},
   setup() {
     return {};
   },
