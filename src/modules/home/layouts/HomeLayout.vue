@@ -48,4 +48,12 @@ export default {
 .description__quote {
   font-size: 20px;
 }
+@media only screen and (max-width: 800px) {
+  .home {
+    flex-direction: column;
+  }
+  .description {
+    width: 100%;
+  }
+}
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar bg-primary">
+  <nav class="navbar navbar--home bg-primary">
     <a class="navbar-brand text-white">
       <img
         src="@/assets/logo.png"
@@ -37,6 +37,7 @@ export default {
 
 <style scoped>
     .nav__items{
+        align-items: center;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -44,7 +45,7 @@ export default {
         padding: 0;
         margin-right: 2rem;
         width: 8rem;
-
+        height: 100%;
     }
     .nav__item{
         color: white;
@@ -58,7 +59,15 @@ export default {
     .item__navigate:hover{
         color: wheat;
         cursor: pointer;
-        font-size: 1rem;
+        font-size: 17px;
         text-decoration: underline;
+    }
+    .navbar--home{
+        padding: 0;
+        height: 50px;
+    }
+    .navbar-brand{
+        align-items: center;
+        height: 100%;
     }
 </style>
