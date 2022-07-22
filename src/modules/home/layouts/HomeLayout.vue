@@ -55,7 +55,7 @@ export default {
   display: flex;
   height: 90vh;
   justify-content: space-between;
-  width: 100vw;
+  width: 100%;
   padding: 2rem;
 }
 .description {
@@ -85,8 +85,8 @@ export default {
     max-height: 100%;
     height: 100%;
     img {
-      min-width: 90%;
-      height: 100%;
+      min-width: 80%;
+      height: 90%;
       object-fit: cover;
     }
   }
