@@ -9,36 +9,59 @@
         that was written and adding a relevant image.
       </q>
     </div>
-    <ImageRoadMap></ImageRoadMap>
+    <Carousel
+      :navigation="true"
+      :pagination="true"
+      :startAutoPlay="true"
+      :timeout="3000"
+      class="carousel"
+      v-slot="{ currentSlide }"
+    >
+      <Slide v-for="(slide, index) in carouselSlides" :key="index">
+        <div v-show="currentSlide === index + 1" class="slide-info">
+          <img :src="require(`../assets/${slide}.jpg`)" alt="" />
+        </div>
+      </Slide>
+    </Carousel>
   </main>
 </template>
 
 <script>
+import { ref } from "vue";
 import { defineAsyncComponent } from "vue";
+import Carousel from "../components/Corousel-component.vue";
+import Slide from "../components/CorouselSlide-component.vue";
 export default {
   components: {
-    NavbarComponent: defineAsyncComponent(() => import("../components/Navbar-component.vue")),
-    ImageRoadMap: defineAsyncComponent(() => import("../components/ImageRoadMap-component.vue")),
-},
+    NavbarComponent: defineAsyncComponent(() =>
+      import("../components/Navbar-component.vue")
+    ),
+    Carousel,
+    Slide,
+  },
+
   setup() {
-    return {};
+    const carouselSlides = ref(["HomeImage1", "HomeImage2", "HomeImage3"]);
+    return {
+      carouselSlides,
+    };
   },
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .home {
   align-items: center;
-  background-color: white;
   display: flex;
-  height: 100%;
-  width: 100%;
+  height: 90vh;
+  justify-content: space-between;
+  width: 100vw;
   padding: 2rem;
 }
 .description {
   display: flex;
   flex-wrap: wrap;
-  width: 45%;
+  width: 40%;
 }
 .description__title {
   color: black;
@@ -48,11 +71,34 @@ export default {
 .description__quote {
   font-size: 20px;
 }
+.carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45%;
+  height: 100%;
+  .slide-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-height: 100%;
+    height: 100%;
+    img {
+      min-width: 90%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
 @media only screen and (max-width: 800px) {
   .home {
     flex-direction: column;
   }
   .description {
+    width: 100%;
+  }
+  .carousel{
     width: 100%;
   }
 }

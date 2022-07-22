@@ -31,7 +31,7 @@
     </div>
 
     <div class="container-login100-form-btn m-t-32">
-      <router-link :to="{ name: 'register' }">¿Ya tienes cuenta?</router-link>
+      <router-link :to="{ name: 'register' }">¿No tienes cuenta?</router-link>
     </div>
   </form>
 </template>
